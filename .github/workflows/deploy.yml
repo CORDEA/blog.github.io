@@ -20,3 +20,6 @@ jobs:
           repository: CORDEA/blog-posts
           path: blog/posts
           token: ${{ secrets.POSTS_TOKEN }}
+      - uses: denoland/setup-deno@v1
+        with:
+          deno-version: v1.x
