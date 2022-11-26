@@ -1,0 +1,22 @@
+name: Deploy
+
+on:
+  push:
+    branches:
+      main
+  workflow_dispatch:
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+      - uses: actions/checkout@v3
+        with:
+          repository: CORDEA/blog
+          path: blog
+      - uses: actions/checkout@v3
+        with:
+          repository: CORDEA/blog-posts
+          path: blog/posts
+          token: ${{ secrets.POSTS_TOKEN }}
