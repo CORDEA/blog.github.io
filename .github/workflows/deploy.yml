@@ -27,3 +27,12 @@ jobs:
           cd blog && deno task build && cd -
           mv blog/_site/* ./
           rm -rf blog
+      - uses: actions/checkout@v3
+        with:
+          ref: pages
+          clean: false
+      - run: |
+          git config user.name 'Yoshihiro Tanaka'
+          git config user.email 'contact@cordea.jp'
+          find . -type f \( -name '*.css' -o -name '*.html' \) -exec git add '{}' \;
+          git commit -m 'update' && git push || true
